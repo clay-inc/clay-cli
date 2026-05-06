@@ -1,55 +1,55 @@
 ---
-name: Clay
-description: Search, manage, and organize your contact network via the Clay CLI.
-homepage: https://clay.earth
+name: Mesh
+description: Search, manage, and organize your contact network via the Mesh CLI.
+homepage: https://me.sh
 metadata:
   {
     "openclaw":
       {
         "emoji": "🕸️",
         "os": ["darwin", "linux"],
-        "requires": { "bins": ["clay"] },
+        "requires": { "bins": ["mesh"] },
         "install":
           [
             {
               "id": "npm",
               "kind": "npm",
-              "package": "@clayhq/clay-cli",
-              "bins": ["clay"],
-              "label": "Install clay (npm)",
+              "package": "@meshhq/mesh-cli",
+              "bins": ["mesh"],
+              "label": "Install mesh (npm)",
             },
           ],
       },
   }
 ---
 
-# Clay
+# Mesh
 
-Use `clay` to search, create, update, and manage your personal contact network from the command line.
+Use `mesh` to search, create, update, and manage your personal contact network from the command line.
 
 ## Requirements
 
-- A Clay account ([clay.earth](https://clay.earth))
-- Authenticate before using any commands: `clay login`
+- A Mesh account ([me.sh](https://me.sh))
+- Authenticate before using any commands: `mesh login`
 
 ## Authentication
 
 Log in (opens browser for OAuth):
 
 ```bash
-clay login
+mesh login
 ```
 
 Check authentication status:
 
 ```bash
-clay status
+mesh status
 ```
 
 Log out:
 
 ```bash
-clay logout
+mesh logout
 ```
 
 Credentials are stored in `~/.config/clay.json`.
@@ -63,8 +63,8 @@ All data commands support `--format` to control output:
 - `tsv` — Tab-separated values
 
 ```bash
-clay contacts:search --name "Alice" --format csv
-clay emails:recent --format tsv
+mesh contacts:search --name "Alice" --format csv
+mesh emails:recent --format tsv
 ```
 
 ## Contacts
@@ -72,46 +72,46 @@ clay emails:recent --format tsv
 Get a contact by ID:
 
 ```bash
-clay contact --contact-id 12345
+mesh contact --contact-id 12345
 ```
 
 Search contacts:
 
 ```bash
-clay contacts:search --name "Jane Smith"
-clay contacts:search --work-history-company "Acme" --work-history-active true
-clay contacts:search --education-history-school "MIT"
-clay contacts:search --location-latitude 37.7749 --location-longitude -122.4194 --location-distance 50
-clay contacts:search --last-email-date-gte "2025-01-01" --sort-field "last_email_date" --sort-direction "desc"
-clay contacts:search --group-ids "starred" --limit 10
-clay contacts:search --keywords "investor" --include-fields "name,email,title"
+mesh contacts:search --name "Jane Smith"
+mesh contacts:search --work-history-company "Acme" --work-history-active true
+mesh contacts:search --education-history-school "MIT"
+mesh contacts:search --location-latitude 37.7749 --location-longitude -122.4194 --location-distance 50
+mesh contacts:search --last-email-date-gte "2025-01-01" --sort-field "last_email_date" --sort-direction "desc"
+mesh contacts:search --group-ids "starred" --limit 10
+mesh contacts:search --keywords "investor" --include-fields "name,email,title"
 ```
 
 Create a contact:
 
 ```bash
-clay contacts:create --first-name "Jane" --last-name "Doe" --email "jane@example.com"
-clay contacts:create --first-name "Bob" --title "CEO" --organization "Acme Inc" --birthday "1990-05-15"
+mesh contacts:create --first-name "Jane" --last-name "Doe" --email "jane@example.com"
+mesh contacts:create --first-name "Bob" --title "CEO" --organization "Acme Inc" --birthday "1990-05-15"
 ```
 
 Update a contact:
 
 ```bash
-clay contacts:update --contact-id 12345 --title "CTO" --organization "NewCo"
-clay contacts:update --contact-id 12345 --email "new@example.com" --phone "+1234567890"
+mesh contacts:update --contact-id 12345 --title "CTO" --organization "NewCo"
+mesh contacts:update --contact-id 12345 --email "new@example.com" --phone "+1234567890"
 ```
 
 Archive / restore contacts:
 
 ```bash
-clay contacts:archive --contact-ids 12345
-clay contacts:restore --contact-ids 12345
+mesh contacts:archive --contact-ids 12345
+mesh contacts:restore --contact-ids 12345
 ```
 
 Merge duplicate contacts:
 
 ```bash
-clay contacts:merge --contact-ids 12345 --contact-ids 67890
+mesh contacts:merge --contact-ids 12345 --contact-ids 67890
 ```
 
 ## Notes
@@ -119,15 +119,15 @@ clay contacts:merge --contact-ids 12345 --contact-ids 67890
 List notes in a date range:
 
 ```bash
-clay notes --start "2025-01-01" --end "2025-12-31"
-clay notes --contact-ids 12345
+mesh notes --start "2025-01-01" --end "2025-12-31"
+mesh notes --contact-ids 12345
 ```
 
 Create a note on a contact:
 
 ```bash
-clay notes:create --contact-id 12345 --content "Met at the conference, very interested in partnerships."
-clay notes:create --contact-id 12345 --content "Follow up next week" --reminder-date "2026-03-01T09:00:00Z"
+mesh notes:create --contact-id 12345 --content "Met at the conference, very interested in partnerships."
+mesh notes:create --contact-id 12345 --content "Follow up next week" --reminder-date "2026-03-01T09:00:00Z"
 ```
 
 Notes support contact references in content: `[contact:123:John Doe]`.
@@ -137,22 +137,22 @@ Notes support contact references in content: `[contact:123:John Doe]`.
 List all groups:
 
 ```bash
-clay groups
-clay groups --limit 50
+mesh groups
+mesh groups --limit 50
 ```
 
 Create a group:
 
 ```bash
-clay groups:create --title "Investors"
+mesh groups:create --title "Investors"
 ```
 
 Update a group (rename, add/remove members):
 
 ```bash
-clay groups:update --group-id 42 --title "Angel Investors"
-clay groups:update --group-id 42 --add-contact-ids 12345 --add-contact-ids 67890
-clay groups:update --group-id 42 --remove-contact-ids 11111
+mesh groups:update --group-id 42 --title "Angel Investors"
+mesh groups:update --group-id 42 --add-contact-ids 12345 --add-contact-ids 67890
+mesh groups:update --group-id 42 --remove-contact-ids 11111
 ```
 
 ## Events
@@ -160,15 +160,15 @@ clay groups:update --group-id 42 --remove-contact-ids 11111
 List events in a date range:
 
 ```bash
-clay events --start "2025-01-01" --end "2025-03-01"
-clay events --contact-ids 12345
+mesh events --start "2025-01-01" --end "2025-03-01"
+mesh events --contact-ids 12345
 ```
 
 List upcoming events:
 
 ```bash
-clay events:upcoming
-clay events:upcoming --limit 20 --page 2
+mesh events:upcoming
+mesh events:upcoming --limit 20 --page 2
 ```
 
 ## Emails
@@ -176,15 +176,15 @@ clay events:upcoming --limit 20 --page 2
 List emails in a date range:
 
 ```bash
-clay emails --start "2025-01-01" --end "2025-02-01"
-clay emails --contact-ids 12345
+mesh emails --start "2025-01-01" --end "2025-02-01"
+mesh emails --contact-ids 12345
 ```
 
 List recent emails:
 
 ```bash
-clay emails:recent
-clay emails:recent --limit 25 --contact-ids 12345
+mesh emails:recent
+mesh emails:recent --limit 25 --contact-ids 12345
 ```
 
 ## Reminders
@@ -192,15 +192,15 @@ clay emails:recent --limit 25 --contact-ids 12345
 List recent reminders:
 
 ```bash
-clay reminders:recent
-clay reminders:recent --limit 5
+mesh reminders:recent
+mesh reminders:recent --limit 5
 ```
 
 List upcoming reminders:
 
 ```bash
-clay reminders:upcoming
-clay reminders:upcoming --limit 20 --page 2
+mesh reminders:upcoming
+mesh reminders:upcoming --limit 20 --page 2
 ```
 
 ## Search Options Reference
