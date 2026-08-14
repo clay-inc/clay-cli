@@ -52,7 +52,7 @@ Log out:
 mesh logout
 ```
 
-Credentials are stored in `~/.config/clay.json`.
+Credentials are stored in `~/.config/mesh-cli.json`.
 
 ## Output Formats
 
